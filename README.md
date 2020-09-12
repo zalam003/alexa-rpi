@@ -2,7 +2,7 @@
 ## Make your own Amazon Echo Screen
 
 ****************************************************************   
-### Before Starting the setup   
+### A. Create Security Profile   
 ****************************************************************  
 
 1. Create a security profile for alexa-avs-sample-app if you already don't have one.
@@ -14,7 +14,7 @@ https://github.com/alexa/avs-device-sdk/wiki/Create-Security-Profile
 
 
 ****************************************************************   
-### Download and Image (Linux version 4.19.118-v7+)
+### B. Download and Image (Linux version 4.19.118-v7+)
 ****************************************************************
 
 1. Download the following Rasberry Pi Image:
@@ -25,7 +25,7 @@ https://downloads.raspberrypi.org/raspios_full_armhf/images/raspios_full_armhf-2
 2. Image SD card and boot Rasberry Pi
 
 ***************************************************************
-### Setup       
+### C. Setup Alexa Screen
 ***************************************************************
 1. Clone the git using:
 ```
