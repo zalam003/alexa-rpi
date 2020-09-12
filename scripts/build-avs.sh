@@ -30,18 +30,24 @@ cd $HOME/sdk_folder/sdk-source
     
 git clone --single-branch --branch v1.20.0 git://github.com/alexa/avs-device-sdk.git
 
+cd $HOME/sdk_folder/third-party
+git clone git://github.com/Sensory/alexa-rpi.git
+
+cd $HOME/sdk_folder/third-party/alexa-rpi/bin/
+./license.sh
+
 cd $HOME/sdk_folder/sdk-build
-    
 cmake $HOME/sdk_folder/sdk-source/avs-device-sdk \
+ -DSENSORY_KEY_WORD_DETECTOR=ON \
+ -DSENSORY_KEY_WORD_DETECTOR_LIB_PATH=$HOME/sdk_folder/third-party/alexa-rpi/lib/libsnsr.a \
+ -DSENSORY_KEY_WORD_DETECTOR_INCLUDE_DIR=$HOME/sdk_folder/third-party/alexa-rpi/include \
  -DGSTREAMER_MEDIA_PLAYER=ON \
  -DPORTAUDIO=ON \
  -DPORTAUDIO_LIB_PATH=$HOME/sdk_folder/third-party/portaudio/lib/.libs/libportaudio.a \
- -DPORTAUDIO_INCLUDE_DIR=$HOME/sdk_folder/third-party/portaudio/include \
- -DCMAKE_BUILD_TYPE=DEBUG \
- -DCMAKE_INSTALL_PREFIX=$HOME/sdk_folder/sdk-install \
- -DRAPIDJSON_MEM_OPTIMIZATION=OFF
+ -DPORTAUDIO_INCLUDE_DIR=$HOME/sdk_folder/third-party/portaudio/include
 
-make install
+#make SampleApp
+make
 
 BUILD_PATH=$HOME/sdk_folder/sdk-build
 OUTPUT_CONFIG_FILE="$BUILD_PATH/Integration/AlexaClientSDKConfig.json"
@@ -100,4 +106,5 @@ read -p "Verify the AVS Device SDK build [Y/n]: "
 
 # Step 6: Verify the AVS Device SDK build
 cd $HOME/sdk_folder/sdk-build
-PA_ALSA_PLUGHW=1 ./SampleApp/src/SampleApp ./Integration/AlexaClientSDKConfig.json INFO
+#PA_ALSA_PLUGHW=1 ./SampleApp/src/SampleApp ./Integration/AlexaClientSDKConfig.json INFO
+PA_ALSA_PLUGHW=1 ./SampleApp/src/SampleApp ./Integration/AlexaClientSDKConfig.json ../third-party/alexa-rpi/models

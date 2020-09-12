@@ -28,11 +28,16 @@ sudo apt-get install -y nodejs
 cd $HOME/sdk_folder
 git clone git://github.com/alexa/alexa-smart-screen-sdk.git
 
+cp $HOME/Downloads/package-lock.json $HOME/sdk_folder/alexa-smart-screen-sdk/modules/GUI/js/.
+
 cd $HOME/sdk_folder
 mkdir ss-build
 cd ss-build
 
 cmake -DCMAKE_PREFIX_PATH=$HOME/sdk_folder/sdk-install \
+ -DSENSORY_KEY_WORD_DETECTOR=ON \
+ -DSENSORY_KEY_WORD_DETECTOR_LIB_PATH=$HOME/sdk_folder/third-party/alexa-rpi/lib/libsnsr.a \
+ -DSENSORY_KEY_WORD_DETECTOR_INCLUDE_DIR=$HOME/sdk_folder/third-party/alexa-rpi/include \
  -DWEBSOCKETPP_INCLUDE_DIR=$HOME/sdk_folder/third-party/websocketpp-0.8.1 \
  -DDISABLE_WEBSOCKET_SSL=ON \
  -DGSTREAMER_MEDIA_PLAYER=ON \
