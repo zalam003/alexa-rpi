@@ -3,7 +3,6 @@
 # Step 7: Download and build the APL Core Library
 cd $HOME/alexa-rpi
 git clone --single-branch --branch v1.3.3 git://github.com/alexa/apl-core-library.git 
-
 cd $HOME/alexa-rpi/apl-core-library
 mkdir build
 cd build

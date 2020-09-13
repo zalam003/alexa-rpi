@@ -24,18 +24,19 @@ cd portaudio
 cd $HOME/alexa-rpi/third-party/portaudio
 make -j4
 
+# Install package to parse json file
 pip install commentjson
 
+#
 cd $HOME/alexa-rpi/sdk-source
-    
 git clone --single-branch --branch v1.20.0 git://github.com/alexa/avs-device-sdk.git
 
 cd $HOME/alexa-rpi/third-party
 git clone git://github.com/Sensory/alexa-rpi.git
-
 cd $HOME/alexa-rpi/third-party/alexa-rpi/bin/
 ./license.sh
 
+#
 cd $HOME/alexa-rpi/sdk-build
 cmake $HOME/alexa-rpi/sdk-source/avs-device-sdk \
  -DSENSORY_KEY_WORD_DETECTOR=ON \
@@ -44,11 +45,15 @@ cmake $HOME/alexa-rpi/sdk-source/avs-device-sdk \
  -DGSTREAMER_MEDIA_PLAYER=ON \
  -DPORTAUDIO=ON \
  -DPORTAUDIO_LIB_PATH=$HOME/alexa-rpi/third-party/portaudio/lib/.libs/libportaudio.a \
- -DPORTAUDIO_INCLUDE_DIR=$HOME/alexa-rpi/third-party/portaudio/include
+ -DPORTAUDIO_INCLUDE_DIR=$HOME/alexa-rpi/third-party/portaudio/include \
+ -DCMAKE_BUILD_TYPE=DEBUG \
+ -DCMAKE_INSTALL_PREFIX=$HOME/alexa-rpi/sdk-install \
+ -DRAPIDJSON_MEM_OPTIMIZATION=OFF
 
 #make SampleApp
-make
+make install
 
+# Update AlexaClientSDKConfig.json
 BUILD_PATH=$HOME/alexa-rpi/sdk-build
 OUTPUT_CONFIG_FILE="$BUILD_PATH/Integration/AlexaClientSDKConfig.json"
 TEMP_CONFIG_FILE="$BUILD_PATH/Integration/tmp_AlexaClientSDKConfig.json"
@@ -86,7 +91,7 @@ rm $TEMP_CONFIG_FILE
  
 cp $OUTPUT_CONFIG_FILE $HOME/alexa-rpi/BACKUP-AlexaClientSDKConfig.json
 
-
+#####
 # Configure the microphone and speaker
 cat << EOF > ~/.asoundrc
 pcm.!default {
