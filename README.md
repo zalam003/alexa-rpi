@@ -61,5 +61,6 @@ file:///home/pi/alexa-rpi/ss-build/modules/GUI/index.html
 ```
 sudo cp $HOME/alexa-rpi/scripts/alexa.service /lib/systemd/system/.
 sudo systemctl daemon-reload
+sudo systemctl enable alexa.service
 sudo reboot
 ```
