@@ -32,22 +32,34 @@ https://downloads.raspberrypi.org/raspios_full_armhf/images/raspios_full_armhf-2
 git clone https://github.com/zalam003/alexa-rpi.git  
 ```
 
-2. Make the installers executable using:
-```
-chmod 755 $HOME/alexa-rpi/scripts/*.sh
-```
-
-3. Setup & Test AVS
+2. Build AVS
 ```
 $HOME/alexa-rpi/scripts/build-avs.sh
 ```
 
-4. Setup and Test Alexa Screen
+3. Register and test AVS
+```
+$HOME/alexa-rpi/scripts/test-avs.sh
+```
+
+4. Build Alexa Screen
 ```
 $HOME/alexa-rpi/scripts/build-screen.sh
 ```
 
-5. Start Alexa Screen
+5. Setup and Test Alexa Screen
 ```
-To be added
+$HOME/alexa-rpi/scripts/test-screen.sh
+```
+
+Open Chrome or Firefox browser and start Alexa Screen:
+```
+file:///home/pi/alexa-rpi/ss-build/modules/GUI/index.html
+```
+
+6. Setup Raspberry to auto start Alexa Screen
+```
+sudo cp $HOME/alexa-rpi/scripts/alexa.service /lib/systemd/system/.
+sudo systemctl daemon-reload
+sudo reboot
 ```
