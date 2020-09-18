@@ -52,12 +52,12 @@ $HOME/alexa-rpi/scripts/build-screen.sh
 $HOME/alexa-rpi/scripts/test-screen.sh
 ```
 
-Open Chrome or Firefox browser and start Alexa Screen:
+6. Open Chrome or Firefox browser and start Alexa Screen:
 ```
 file:///home/pi/alexa-rpi/ss-build/modules/GUI/index.html
 ```
 
-6. Setup Raspberry to auto start Alexa Screen
+7. Open a Terminal window and do the following to auto start Alexa Screen
 ```
 cp /home/pi/alexa-rpi/ss-build/StartSample.sh /home/pi/alexa-rpi/ss-build/Backup-StartSample.sh
 cp /home/pi/alexa-rpi/scripts/StartSample.sh /home/pi/alexa-rpi/ss-build/.
