@@ -52,10 +52,3 @@ cmake -DCMAKE_PREFIX_PATH=$HOME/alexa-rpi/sdk-install \
   
 make
 
-read -p "Test the Alexa Smart Screen SDK sample app [Y/n]: "
-
-# Step 10: Test the Alexa Smart Screen SDK sample app
-cd $HOME/alexa-rpi/ss-build
-PA_ALSA_PLUGHW=1 ./modules/Alexa/SampleApp/src/SampleApp -C \
-$HOME/alexa-rpi/sdk-build/Integration/AlexaClientSDKConfig.json -C \
-$HOME/alexa-rpi/alexa-smart-screen-sdk/modules/GUI/config/SmartScreenSDKConfig.json -L INFO
