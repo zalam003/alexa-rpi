@@ -59,8 +59,9 @@ file:///home/pi/alexa-rpi/ss-build/modules/GUI/index.html
 
 6. Setup Raspberry to auto start Alexa Screen
 ```
-sudo cp $HOME/alexa-rpi/scripts/alexa.service /lib/systemd/system/.
-sudo systemctl daemon-reload
-sudo systemctl enable alexa.service
+cp /home/pi/alexa-rpi/ss-build/StartSample.sh /home/pi/alexa-rpi/ss-build/Backup-StartSample.sh
+cp /home/pi/alexa-rpi/scripts/StartSample.sh /home/pi/alexa-rpi/ss-build/.
+mkdir -p /home/pi/.config/lxsession/LXDE-pi
+cp /home/pi/alexa-rpi/scriptsautostart /home/pi/.config/lxsession/LXDE-pi/.
 sudo reboot
 ```
