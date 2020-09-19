@@ -4,10 +4,4 @@
 @xset s off
 @xset -dpms
 @xset s noblank
-@chromium-browser "file://$(pwd)//modules/GUI/index.html" &
-@cd /home/pi/alexa-rpi
-@./modules/Alexa/SampleApp/src/SampleApp \
--C /home/pi/alexa-rpi/sdk-build/Integration/AlexaClientSDKConfig.json \
--K ../third-party/alexa-rpi/models \
--L INFO \
--C /home/pi/alexa-rpi/alexa-smart-screen-sdk/modules/GUI/config/SmartScreenSDKConfig.json
+@/home/pi/alexa-rpi/scripts/startscreen.sh
